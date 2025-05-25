@@ -34,6 +34,7 @@ jobs:
         id: tag
         run: |
           echo "TAG=$(date +'%y%m%d_%H%M')" >> $GITHUB_ENV
+          echo "REPO_LC=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Run tests
         run: |
@@ -44,4 +45,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ env.TAG }}
+          tags: ghcr.io/${{ env.REPO_LC }}:${{ env.TAG }}
