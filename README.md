@@ -88,7 +88,7 @@ A separate GitHub Action workflow automatically builds and pushes a Docker image
 
 - **Image Tag Format:** `yyMMdd_HHmm` (e.g., `250525_1530` for May 25, 2025, 15:30 UTC)
 - **Registry:** `ghcr.io/<owner>/<repo>:<tag>`
-- **Manual Trigger:** Go to the [Actions tab](../../actions) and select the "Build and Push Docker Image" workflow, then click "Run workflow".
+- **Manual Trigger:** Go to the [Actions tab](/ckrowiorsch/langsmith-exporter/actions) and select the "Build and Push Docker Image" workflow, then click "Run workflow".
 
 ### Example: Using the Latest Image
 
