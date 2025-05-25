@@ -2,20 +2,20 @@
 
 [![Build Status](https://github.com/ckrowiorsch/langsmith-exporter/actions/workflows/ci.yml/badge.svg)](https://github.com/ckrowiorsch/langsmith-exporter/actions/workflows/ci.yml)
 
-Ein Prometheus Exporter für das Langsmith Tracing-System.
+A Prometheus exporter for the Langsmith tracing system.
 
 ## Features
-- Exportiert Metriken wie Runs, fehlgeschlagene Runs und Gesamtkosten aus einem Langsmith-Projekt
-- Prometheus-kompatibles /metrics-Endpoint
-- Docker- und Kubernetes-fähig
+- Exports metrics such as runs, failed runs, and total costs from a Langsmith project
+- Prometheus-compatible /metrics endpoint
+- Docker and Kubernetes ready
 
-## Nutzung
+## Usage
 
-### Voraussetzungen
-- Go 1.22 oder neuer
-- Zugriff auf die Langsmith API (API Key und Project ID)
+### Requirements
+- Go 1.22 or newer
+- Access to the Langsmith API (API Key and Project ID)
 
-### Build & Start
+### Build & Run
 
 ```bash
 go build -o langsmith-exporter main.go
@@ -29,17 +29,17 @@ docker build -t langsmith-exporter .
 docker run -e LANGSMITH_API_KEY=... -e LANGSMITH_PROJECT_ID=... -p 8080:8080 langsmith-exporter
 ```
 
-## Konfiguration
-- `LANGSMITH_API_KEY`: API Key für Langsmith
-- `LANGSMITH_PROJECT_ID`: Projekt-ID
-- `EXPORTER_LISTEN_ADDR`: (optional) Adresse, auf der der Exporter lauscht (Standard: `:8080`)
+## Configuration
+- `LANGSMITH_API_KEY`: API key for Langsmith
+- `LANGSMITH_PROJECT_ID`: Project ID
+- `EXPORTER_LISTEN_ADDR`: (optional) Address the exporter listens on (default: `:8080`)
 
-## Lizenz
+## License
 MIT License
 
-## Beispiel: Kubernetes Integration
+## Example: Kubernetes Integration
 
-Um den Exporter in Kubernetes zu betreiben, kann ein Deployment und ein Service wie folgt aussehen:
+To run the exporter in Kubernetes, you can use a Deployment and Service like this:
 
 ```yaml
 apiVersion: apps/v1
@@ -61,9 +61,9 @@ spec:
         image: ghcr.io/ckrowiorsch/langsmith-exporter:latest
         env:
         - name: LANGSMITH_API_KEY
-          value: "<dein-api-key>"
+          value: "<your-api-key>"
         - name: LANGSMITH_PROJECT_ID
-          value: "<deine-projekt-id>"
+          value: "<your-project-id>"
         ports:
         - containerPort: 8080
 ---
@@ -80,4 +80,4 @@ spec:
     targetPort: 8080
 ```
 
-Der Exporter ist dann unter `http://<service-ip>:8080/metrics` erreichbar und kann von Prometheus gescraped werden.
+The exporter will then be available at `http://<service-ip>:8080/metrics` and can be scraped by Prometheus.
