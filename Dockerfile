@@ -19,7 +19,7 @@ COPY . .
 RUN go build -o langsmith-exporter main.go
 
 # Use a minimal image for running
-FROM alpine:latest
+FROM alpine:3.18
 WORKDIR /root/
 
 # Copy the built binary from builder
