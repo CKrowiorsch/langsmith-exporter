@@ -81,3 +81,24 @@ spec:
 ```
 
 The exporter will then be available at `http://<service-ip>:8080/metrics` and can be scraped by Prometheus.
+
+## GitHub Actions: Docker Image Build & Push
+
+A separate GitHub Action workflow automatically builds and pushes a Docker image to the GitHub Container Registry (`ghcr.io`) **when a pull request is merged into `main` and all tests are successful**. You can also trigger this workflow manually from the GitHub Actions tab.
+
+- **Image Tag Format:** `yyMMdd_HHmm` (e.g., `250525_1530` for May 25, 2025, 15:30 UTC)
+- **Registry:** `ghcr.io/<owner>/<repo>:<tag>`
+- **Manual Trigger:** Go to the [Actions tab](/ckrowiorsch/langsmith-exporter/actions) and select the "Build and Push Docker Image" workflow, then click "Run workflow".
+
+### Example: Using the Latest Image
+
+Update your Kubernetes or Docker deployment to use the latest image tag:
+
+```yaml
+containers:
+  - name: exporter
+    image: ghcr.io/<owner>/<repo>:<tag>
+    # ...
+```
+
+See `.github/workflows/docker-image.yml` for details.
