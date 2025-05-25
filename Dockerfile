@@ -20,11 +20,18 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o langsmith-exporter main.go
 
 # Use a minimal image for running
 FROM alpine:3.18
-WORKDIR /root/
 
-# Copy the built binary from builder
+# Create a non-root user and group
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+WORKDIR /home/appuser/
+
+# Copy the built binary from builder and set ownership
 COPY --from=builder /app/langsmith-exporter .
+RUN chown appuser:appgroup langsmith-exporter
 
+# Switch to the non-root user
+USER appuser
 # Expose port if needed (uncomment if your app listens on a port)
 # EXPOSE 8080
 
