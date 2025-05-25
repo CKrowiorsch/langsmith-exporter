@@ -25,4 +25,18 @@ jobs:
         run: go build -v ./...
 
       - name: Run tests
-        run: go test -v ./...
+        run: go test -v -coverprofile=coverage.out -json ./... | tee test-report.json
+
+      - name: Convert test report to JUnit XML
+        uses: mikepenz/action-junit-report@v4
+        with:
+          report_paths: 'test-report.json'
+          output: 'junit.xml'
+
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Go Tests
+          path: junit.xml
+          reporter: java-junit
