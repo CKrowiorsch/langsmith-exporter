@@ -39,4 +39,4 @@ jobs:
         with:
           name: Go Tests
           path: junit.xml
-          reporter: junit
+          reporter: java-junit
