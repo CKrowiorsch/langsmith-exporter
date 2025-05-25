@@ -27,8 +27,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 WORKDIR /home/appuser/
 
 # Copy the built binary from builder and set ownership
-COPY --from=builder /app/langsmith-exporter .
-RUN chown appuser:appgroup langsmith-exporter
+COPY --from=builder --chown=appuser:appgroup /app/langsmith-exporter .
 
 # Switch to the non-root user
 USER appuser
