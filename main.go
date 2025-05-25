@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
-	"github.com/yourusername/langsmith-exporter/exporter"
-	"github.com/yourusername/langsmith-exporter/langsmith"
+	"github.com/ckrowiorsch/langsmith-exporter/exporter"
+	"github.com/ckrowiorsch/langsmith-exporter/langsmith"
 )
 
 func main() {
