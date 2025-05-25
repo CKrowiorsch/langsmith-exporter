@@ -4,7 +4,7 @@ FROM golang:1.21-alpine AS builder
 WORKDIR /app
 
 # Install git in a fixed version for go mod download
-RUN apk add --no-cache git=2.40.1-r0
+RUN apk add --no-cache git
 
 # Copy go mod and sum files
 COPY go.mod go.sum ./
