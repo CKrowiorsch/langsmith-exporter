@@ -1,0 +1,30 @@
+# Ignore the binary
+langsmith-exporter
+
+# Ignore build and temp files
+*.out
+*.exe
+*.log
+*.tmp
+
+# Ignore VCS
+.git
+.gitignore
+
+# Ignore editor/project files
+.vscode
+.idea
+*.swp
+
+# Ignore test output
+coverage*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore Go modules cache (if copied by mistake)
+/pkg/mod/
+
+# Ignore vendor if not used
+/vendor/
