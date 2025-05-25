@@ -1,2 +1,38 @@
 # langsmith-exporter
-An exporter for the langsmith tracing system
+
+[![Build Status](https://github.com/ckrowiorsch/langsmith-exporter/actions/workflows/ci.yml/badge.svg)](https://github.com/ckrowiorsch/langsmith-exporter/actions/workflows/ci.yml)
+
+Ein Prometheus Exporter für das Langsmith Tracing-System.
+
+## Features
+- Exportiert Metriken wie Runs, fehlgeschlagene Runs und Gesamtkosten aus einem Langsmith-Projekt
+- Prometheus-kompatibles /metrics-Endpoint
+- Docker- und Kubernetes-fähig
+
+## Nutzung
+
+### Voraussetzungen
+- Go 1.22 oder neuer
+- Zugriff auf die Langsmith API (API Key und Project ID)
+
+### Build & Start
+
+```bash
+go build -o langsmith-exporter main.go
+LANGSMITH_API_KEY=... LANGSMITH_PROJECT_ID=... ./langsmith-exporter
+```
+
+### Docker
+
+```bash
+docker build -t langsmith-exporter .
+docker run -e LANGSMITH_API_KEY=... -e LANGSMITH_PROJECT_ID=... -p 8080:8080 langsmith-exporter
+```
+
+## Konfiguration
+- `LANGSMITH_API_KEY`: API Key für Langsmith
+- `LANGSMITH_PROJECT_ID`: Projekt-ID
+- `EXPORTER_LISTEN_ADDR`: (optional) Adresse, auf der der Exporter lauscht (Standard: `:8080`)
+
+## Lizenz
+MIT License
