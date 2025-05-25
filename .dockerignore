@@ -9,7 +9,6 @@ langsmith-exporter
 
 # Ignore VCS
 .git
-.gitignore
 
 # Ignore editor/project files
 .vscode
