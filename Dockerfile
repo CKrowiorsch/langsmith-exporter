@@ -31,8 +31,8 @@ COPY --from=builder --chown=appuser:appgroup /app/langsmith-exporter .
 
 # Switch to the non-root user
 USER appuser
-# Expose port if needed (uncomment if your app listens on a port)
-# EXPOSE 8080
+# Expose port for the application
+EXPOSE 8080
 
 # Command to run
 CMD ["./langsmith-exporter"]
