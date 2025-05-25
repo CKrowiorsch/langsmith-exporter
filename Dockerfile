@@ -20,6 +20,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o langsmith-exporter main.go
 
 # Use a minimal image for running
 FROM alpine:3.18
+RUN apk add --no-cache ca-certificates
 
 # Create a non-root user and group
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
