@@ -16,7 +16,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN go build -o langsmith-exporter main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o langsmith-exporter main.go
 
 # Use a minimal image for running
 FROM alpine:3.18
